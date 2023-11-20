@@ -10,25 +10,52 @@ Juego::Juego(int ancho, int alto, std::string titulo) {
 	ventana1 = new RenderWindow(VideoMode(ancho, alto), titulo);
 	//ventana1->setMouseCursorVisible(false);
 
+	//iniciar todas las variables y posicionarlas en la ventana
 	textura1 = new Texture;
+	textura2 = new Texture;
+	textura3 = new Texture;
+	textura4 = new Texture;
+
+	ventana_arriba_cerrada = new Sprite;
+	ventana_arriba_cerrada2 = new Sprite;
+	ventana_abajo_cerrada = new Sprite;
+	ventana_abajo_cerrada2 = new Sprite;
+	puerta_cerrada = new Sprite;
 	fondo = new Sprite;
+
 	textura1->loadFromFile("assets/fondo_base.jpg");
+	textura2->loadFromFile("assets/ventana_arriba_cerrada.png");
+	textura3->loadFromFile("assets/ventana_abajo_cerrada.png");
+	textura4->loadFromFile("assets/puerta_cerrada.png");
+
 	fondo->setTexture(*textura1);
+	ventana_arriba_cerrada->setTexture(*textura2);
+	ventana_arriba_cerrada2->setTexture(*textura2);
+	ventana_abajo_cerrada->setTexture(*textura3);
+	ventana_abajo_cerrada2->setTexture(*textura3);
+	puerta_cerrada->setTexture(*textura4);
+
+	ventana_arriba_cerrada->setPosition(75,84);
+	ventana_arriba_cerrada2->setPosition(525, 84);
+	ventana_abajo_cerrada->setPosition(50, 334);
+	ventana_abajo_cerrada2->setPosition(550, 334);
+	puerta_cerrada->setPosition(337, 328);
 
 	font = new Font;
 	menu = new Text;
 
-	font->loadFromFile("assets/arial.ttf"); // Reemplaza "arial.ttf" con la ruta de tu fuente
+	font->loadFromFile("assets/arial.ttf");
 	menu->setFont(*font);
 	menu->setString("Presiona 'S' para comenzar");
 	menu->setCharacterSize(24);
 	menu->setPosition(250, 300);
 
-
+	//iniciar el juego siempre desde el menu
 	start = false;
 
 }
 
+//Menu de juego donde se incluye el loop
 void Juego::ejecutar() {
 
 	while (ventana1->isOpen()) {
@@ -103,6 +130,11 @@ void Juego::dibujar() {
 	ventana1->clear();
 
 	ventana1->draw(*fondo);
+	ventana1->draw(*ventana_arriba_cerrada);
+	ventana1->draw(*ventana_arriba_cerrada2);
+	ventana1->draw(*ventana_abajo_cerrada);
+	ventana1->draw(*ventana_abajo_cerrada2);
+	ventana1->draw(*puerta_cerrada);
 	
 	
 	ventana1->display();

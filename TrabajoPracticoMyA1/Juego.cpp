@@ -50,6 +50,7 @@ Juego::Juego(int ancho, int alto, std::string titulo) {
 	menu->setCharacterSize(24);
 	menu->setPosition(250, 300);
 
+	
 	//iniciar el juego siempre desde el menu
 	start = false;
 
@@ -119,6 +120,7 @@ void Juego::procesar_eventos() {
 void Juego::actualizar() {
 
 	Vector2i mousePos = Mouse::getPosition(*ventana1);
+	
 	
 	
 

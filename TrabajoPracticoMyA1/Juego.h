@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include <SFML/System.hpp>
+#include "Enemigos.h"
 
 
 
@@ -25,6 +26,9 @@ private:
 	Sprite* ventana_abajo_cerrada;
 	Sprite* ventana_abajo_cerrada2;
 	Sprite* puerta_cerrada;
+
+	
+
 
 
 	//un booleano para determinar cuándo se está jugando y cuándo está en el menu

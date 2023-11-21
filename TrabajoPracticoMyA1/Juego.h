@@ -3,6 +3,7 @@
 #include <SFML/Window.hpp>
 #include <SFML/System.hpp>
 #include "Enemigos.h"
+#include "Jugador.h"
 
 
 
@@ -27,7 +28,7 @@ private:
 	Sprite* ventana_abajo_cerrada2;
 	Sprite* puerta_cerrada;
 
-	
+	Jugador* jugador;
 
 
 

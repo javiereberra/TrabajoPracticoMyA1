@@ -11,9 +11,11 @@ class Enemigos {
 private:
 
 	Texture* enemText;
-	Texture* enemPuertaText;
+	Texture* enemFondoText;
+	Texture* enemTextArriba;
+	Texture* enemFondoTextArriba;
 	Sprite* enemSprite;
-	Sprite* enemPuertaSprite;
+	Sprite* enemFondoSprite;
 	
 	bool _estaVisible;
 	Clock _clock;
@@ -21,6 +23,9 @@ private:
 	float tiempoVisible;
 	float tiempoApagado;
 
+	//probar posiciones
+	Vector2f positions[5];
+	int pos;
 
 public:
 

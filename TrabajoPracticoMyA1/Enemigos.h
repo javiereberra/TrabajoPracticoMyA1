@@ -15,17 +15,22 @@ private:
 	Sprite* enemSprite;
 	Sprite* enemPuertaSprite;
 	
+	bool _estaVisible;
+	Clock _clock;
 
+	float tiempoVisible;
+	float tiempoApagado;
 
 
 public:
 
 	Enemigos();
 
-	
+	bool EstaActivo();
 
 	void Dibujar(RenderWindow* ventana);
 
+	void Actualizar(RenderWindow* ventana);
 
 
 

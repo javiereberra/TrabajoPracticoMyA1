@@ -29,7 +29,7 @@ private:
 	Sprite* puerta_cerrada;
 
 	Jugador* jugador;
-
+	Enemigos* enemigos;
 
 
 	//un booleano para determinar cuándo se está jugando y cuándo está en el menu

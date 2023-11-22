@@ -51,6 +51,7 @@ Juego::Juego(int ancho, int alto, std::string titulo) {
 	menu->setPosition(250, 300);
 
 	jugador = new Jugador();
+	enemigos = new Enemigos();
 	
 	//iniciar el juego siempre desde el menu
 	start = false;
@@ -123,7 +124,7 @@ void Juego::actualizar() {
 	Vector2i mousePos = Mouse::getPosition(*ventana1);
 	jugador->Movimiento(mousePos.x, mousePos.y);
 	
-	
+	enemigos->Actualizar(ventana1);
 
 
 }
@@ -139,6 +140,11 @@ void Juego::dibujar() {
 	ventana1->draw(*ventana_abajo_cerrada2);
 	ventana1->draw(*puerta_cerrada);
 	
+
+	if (enemigos->EstaActivo()) 
+		enemigos->Dibujar(ventana1);
+	
+
 	jugador->Dibujar(ventana1);
 	
 	ventana1->display();

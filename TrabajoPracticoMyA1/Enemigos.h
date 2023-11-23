@@ -10,12 +10,15 @@ class Enemigos {
 
 private:
 
-	Texture* enemText;
-	Texture* enemFondoText;
 	Texture* enemTextArriba;
-	Texture* enemFondoTextArriba;
-	Sprite* enemSprite;
-	Sprite* enemFondoSprite;
+	Sprite* enemSpriteArriba;
+	
+	Texture* enemTextAbajo;
+	Sprite* enemSpriteAbajo;
+
+	Texture* enemTextPuerta;
+	Sprite* enemSpritePuerta;
+
 	
 	bool _estaVisible;
 	Clock _clock;

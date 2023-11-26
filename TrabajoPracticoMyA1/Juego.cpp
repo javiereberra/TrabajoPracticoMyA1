@@ -116,6 +116,10 @@ void Juego::procesar_eventos() {
 		case Event::Closed:
 			ventana1->close();
 			break;
+		case Event::MouseButtonPressed:
+			if (evento1.mouseButton.button == Mouse::Button::Left)
+				disparar();
+			break;
 		}
 	}
 }
@@ -129,6 +133,20 @@ void Juego::actualizar() {
 	inocente->Actualizar(ventana1);
 
 
+}
+
+void Juego::disparar() {
+
+	Vector2f playerPos = jugador->ObtenerPosicion();
+	
+	
+		if (enemigos->EstaActivo()) {
+			if (enemigos->Colision(playerPos.x, playerPos.y))
+				enemigos->Eliminado();
+
+		}
+
+	
 }
 
 void Juego::dibujar() {
@@ -159,7 +177,8 @@ void Juego::dibujar() {
 
 Juego::~Juego() {
 
-
+	delete inocente;
+	delete enemigos;
 	delete jugador;
 	delete ventana1;
 

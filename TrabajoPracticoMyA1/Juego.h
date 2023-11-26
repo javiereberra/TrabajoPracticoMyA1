@@ -48,6 +48,8 @@ public:
 	void dibujar();
 	void actualizar();
 	void procesar_eventos();
+	void disparar();
+
 
 	//destructor de juego
 	~Juego();

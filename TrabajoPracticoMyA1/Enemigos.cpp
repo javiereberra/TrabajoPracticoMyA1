@@ -44,6 +44,39 @@ Enemigos::Enemigos() {
 	positions[4] = Vector2f(550.f, 334.f);
 }
 
+
+
+bool Enemigos::EstaActivo() {
+
+	return _estaVisible;
+}
+
+bool Enemigos::Colision(float x, float y) {
+
+	FloatRect bounds1 = enemSpriteArriba->getGlobalBounds();
+	FloatRect bounds2 = enemSpriteAbajo->getGlobalBounds();
+	FloatRect bounds3 = enemSpritePuerta->getGlobalBounds();
+
+	if (bounds1.contains(x, y)) {
+		return true;
+	}
+		
+	if (bounds2.contains(x, y)) {
+		return true;
+	}
+		
+	if (bounds3.contains(x, y)) {
+		return true;
+	}
+
+}
+
+void Enemigos::Eliminado() {
+
+	_estaVisible = false;
+
+}
+
 void Enemigos::Dibujar(RenderWindow* ventana) {
 	//ventana->draw(*enemSprite);
 	switch (pos) {
@@ -69,8 +102,8 @@ void Enemigos::Dibujar(RenderWindow* ventana) {
 }
 
 void Enemigos::Actualizar(RenderWindow* ventana) {
-
-
+	
+	
 	if (!_estaVisible) {
 		if (_clock.getElapsedTime().asSeconds() > tiempoApagado) {
 			_clock.restart();
@@ -114,7 +147,3 @@ void Enemigos::Actualizar(RenderWindow* ventana) {
 
 }
 
-bool Enemigos::EstaActivo() {
-
-	return _estaVisible;
-}

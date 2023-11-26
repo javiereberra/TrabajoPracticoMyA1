@@ -19,7 +19,7 @@ private:
 	Texture* enemTextPuerta;
 	Sprite* enemSpritePuerta;
 
-	
+	bool _estaVivo;
 	bool _estaVisible;
 	Clock _clock;
 
@@ -34,7 +34,12 @@ public:
 
 	Enemigos();
 
+	
+	bool Colision(float x, float y);
+
 	bool EstaActivo();
+
+	void Eliminado();
 
 	void Dibujar(RenderWindow* ventana);
 

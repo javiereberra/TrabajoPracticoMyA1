@@ -4,6 +4,7 @@
 #include <SFML/System.hpp>
 #include "Enemigos.h"
 #include "Jugador.h"
+#include "Inocente.h"
 
 
 
@@ -30,7 +31,7 @@ private:
 
 	Jugador* jugador;
 	Enemigos* enemigos;
-
+	Inocente* inocente;
 
 	//un booleano para determinar cuándo se está jugando y cuándo está en el menu
 	bool start;

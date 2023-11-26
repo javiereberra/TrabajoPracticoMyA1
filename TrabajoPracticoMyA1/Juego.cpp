@@ -52,6 +52,7 @@ Juego::Juego(int ancho, int alto, std::string titulo) {
 
 	jugador = new Jugador();
 	enemigos = new Enemigos();
+	inocente = new Inocente();
 	
 	//iniciar el juego siempre desde el menu
 	start = false;
@@ -125,6 +126,7 @@ void Juego::actualizar() {
 	jugador->Movimiento(mousePos.x, mousePos.y);
 	
 	enemigos->Actualizar(ventana1);
+	inocente->Actualizar(ventana1);
 
 
 }
@@ -143,6 +145,9 @@ void Juego::dibujar() {
 
 	if (enemigos->EstaActivo()) 
 		enemigos->Dibujar(ventana1);
+
+	if (inocente->EstaActivo())
+		inocente->Dibujar(ventana1);
 	
 
 	jugador->Dibujar(ventana1);

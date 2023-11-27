@@ -36,6 +36,7 @@ public:
 
 	Inocente();
 		
+	bool Colision(float x, float y);
 
 	bool EstaActivo();
 

@@ -153,6 +153,12 @@ void Juego::disparar() {
 
 		}
 
+		if (inocente->EstaActivo()) {
+			if (inocente->Colision(playerPos.x, playerPos.y))
+				inocente->Eliminado();
+
+		}
+
 	
 }
 

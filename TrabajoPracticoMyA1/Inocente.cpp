@@ -150,6 +150,26 @@ bool Inocente::EstaActivo() {
 	return _estaVisible;
 }
 
+bool Inocente::Colision(float x, float y) {
+
+	FloatRect bounds1 = inocSpriteArriba->getGlobalBounds();
+	FloatRect bounds2 = inocSpriteAbajo->getGlobalBounds();
+	FloatRect bounds3 = inocSpritePuerta->getGlobalBounds();
+
+	if (bounds1.contains(x, y)) {
+		return true;
+	}
+
+	if (bounds2.contains(x, y)) {
+		return true;
+	}
+
+	if (bounds3.contains(x, y)) {
+		return true;
+	}
+
+}
+
 void Inocente::Eliminado() {
 
 	_estaVisible = false;

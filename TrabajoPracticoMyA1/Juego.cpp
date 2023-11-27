@@ -4,6 +4,7 @@
 #include "Juego.h"
 
 using namespace sf;
+using namespace std;
 
 Juego::Juego(int ancho, int alto, std::string titulo) {
 
@@ -43,7 +44,21 @@ Juego::Juego(int ancho, int alto, std::string titulo) {
 
 	font = new Font;
 	menu = new Text;
+	//	
+	vidas = 3;
+	ptos = 0;
 
+	puntaje = new Text;
+	puntaje->setFont(*font);
+	puntaje->setCharacterSize(24);
+	puntaje->setString("Puntaje: "+to_string(ptos));
+	puntaje->setPosition(650, 10);
+	vidasText = new Text;
+	vidasText->setFont(*font);
+	vidasText->setCharacterSize(24);
+	vidasText->setString("Vidas: " + to_string(vidas));
+	vidasText->setPosition(10, 10);
+	//
 	font->loadFromFile("assets/arial.ttf");
 	menu->setFont(*font);
 	menu->setString("Presiona 'S' para comenzar");
@@ -147,18 +162,19 @@ void Juego::disparar() {
 	Vector2f playerPos = jugador->ObtenerPosicion();
 	
 	
-		if (enemigos->EstaActivo()) {
-			if (enemigos->Colision(playerPos.x, playerPos.y))
-				enemigos->Eliminado();
-
+	if (enemigos->EstaActivo()) {
+		if (enemigos->Colision(playerPos.x, playerPos.y)) {
+			enemigos->Eliminado();
+			
 		}
+	}
 
-		if (inocente->EstaActivo()) {
-			if (inocente->Colision(playerPos.x, playerPos.y))
-				inocente->Eliminado();
-
+	if (inocente->EstaActivo()) {
+		if (inocente->Colision(playerPos.x, playerPos.y)) {
+			inocente->Eliminado();
+			
 		}
-
+	}
 	
 }
 
@@ -167,6 +183,8 @@ void Juego::dibujar() {
 	ventana1->clear();
 
 	ventana1->draw(*fondo);
+	ventana1->draw(*puntaje);
+	ventana1->draw(*vidasText);
 	ventana1->draw(*ventana_arriba_cerrada);
 	ventana1->draw(*ventana_arriba_cerrada2);
 	ventana1->draw(*ventana_abajo_cerrada);

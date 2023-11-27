@@ -17,6 +17,11 @@ private:
 	RenderWindow* ventana1;
 	Font* font;
 	Text* menu;
+
+	//
+	Text* vidasText;
+	Text* puntaje;
+	//
 	Texture* textura1;
 	Texture* textura2;
 	Texture* textura3;
@@ -32,7 +37,10 @@ private:
 	Jugador* jugador;
 	Enemigos* enemigos;
 	Inocente* inocente;
-
+	//
+	int vidas;
+	int ptos;
+	//
 	//un booleano para determinar cuándo se está jugando y cuándo está en el menu
 	bool start;
 	

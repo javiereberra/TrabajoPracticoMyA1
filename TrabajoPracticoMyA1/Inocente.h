@@ -2,6 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Window.hpp>
 #include <SFML/System.hpp>
+#include "Enemigos.h"
 
 
 using namespace sf;
@@ -20,6 +21,7 @@ private:
 	Sprite* inocSpritePuerta;
 
 
+
 	bool _estaVisible;
 	Clock _clock;
 
@@ -33,6 +35,7 @@ private:
 public:
 
 	Inocente();
+		
 
 	bool EstaActivo();
 
@@ -40,6 +43,7 @@ public:
 
 	void Actualizar(RenderWindow* ventana);
 
+	void Eliminado();
 
-
+	Vector2f ObtenerPosicion();
 };

@@ -129,9 +129,16 @@ void Juego::actualizar() {
 	Vector2i mousePos = Mouse::getPosition(*ventana1);
 	jugador->Movimiento(mousePos.x, mousePos.y);
 	
+	Vector2f posicionInocente = inocente->ObtenerPosicion();
+
 	enemigos->Actualizar(ventana1);
 	inocente->Actualizar(ventana1);
 
+	if (enemigos->EstaActivo()) {
+		if (enemigos->Colision(posicionInocente.x, posicionInocente.y)) {
+			inocente->Eliminado();
+		}
+	}
 
 }
 

@@ -3,6 +3,7 @@
 #include <SFML/System.hpp>
 #include "Inocente.h"
 #include "Juego.h"
+#include "Enemigos.h"
 
 using namespace sf;
 using namespace std;
@@ -43,6 +44,8 @@ Inocente::Inocente() {
 	positions[3] = Vector2f(337.f, 328.f);
 	positions[4] = Vector2f(550.f, 334.f);
 }
+
+
 
 void Inocente::Dibujar(RenderWindow* ventana) {
 	
@@ -114,7 +117,41 @@ void Inocente::Actualizar(RenderWindow* ventana) {
 
 }
 
+Vector2f Inocente::ObtenerPosicion() {
+	Vector2f posicion;
+
+	
+	switch (pos) {
+	case 0:
+	case 1:
+		posicion = inocSpriteArriba->getPosition();
+		break;
+	case 2:
+	case 4:
+		posicion = inocSpriteAbajo->getPosition();
+		break;
+	case 3:
+		posicion = inocSpritePuerta->getPosition();
+		break;
+	default:
+	
+		posicion = Vector2f(0.f, 0.f);
+		break;
+	}
+
+	return posicion;
+}
+
+
+
+
 bool Inocente::EstaActivo() {
 
 	return _estaVisible;
+}
+
+void Inocente::Eliminado() {
+
+	_estaVisible = false;
+
 }

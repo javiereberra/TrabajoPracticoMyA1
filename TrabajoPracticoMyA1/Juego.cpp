@@ -2,6 +2,7 @@
 #include <SFML/Window.hpp>
 #include <SFML/System.hpp>
 #include "Juego.h"
+#include <iostream> 
 
 using namespace sf;
 using namespace std;
@@ -69,9 +70,9 @@ Juego::Juego(int ancho, int alto, std::string titulo) {
 	enemigos = new Enemigos();
 	inocente = new Inocente();
 	
-	//iniciar el juego siempre desde el menu
+	
 	start = false;
-
+	
 }
 
 //Menu de juego donde se incluye el loop
@@ -154,8 +155,10 @@ void Juego::actualizar() {
 			inocente->Eliminado();
 		}
 	}
-
+	
 }
+
+
 
 void Juego::disparar() {
 
@@ -165,18 +168,21 @@ void Juego::disparar() {
 	if (enemigos->EstaActivo()) {
 		if (enemigos->Colision(playerPos.x, playerPos.y)) {
 			enemigos->Eliminado();
-			
+			ptos += 10;
+			puntaje->setString("Puntaje: " + to_string(ptos));
 		}
 	}
 
 	if (inocente->EstaActivo()) {
 		if (inocente->Colision(playerPos.x, playerPos.y)) {
 			inocente->Eliminado();
-			
+			vidas -= 1;
+			vidasText->setString("Vidas: " + to_string(vidas));
 		}
 	}
 	
 }
+
 
 void Juego::dibujar() {
 

@@ -22,6 +22,8 @@ private:
 	Text* vidasText;
 	Text* puntaje;
 	//
+	Text* textGameOver;
+	//
 	Texture* textura1;
 	Texture* textura2;
 	Texture* textura3;
@@ -58,7 +60,7 @@ public:
 	void procesar_eventos();
 	void disparar();
 	//
-	
+	void gameOver();
 
 
 	//destructor de juego

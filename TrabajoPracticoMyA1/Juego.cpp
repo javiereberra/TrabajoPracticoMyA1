@@ -59,7 +59,12 @@ Juego::Juego(int ancho, int alto, std::string titulo) {
 	vidasText->setCharacterSize(24);
 	vidasText->setString("Vidas: " + to_string(vidas));
 	vidasText->setPosition(10, 10);
-	//
+	textGameOver = new Text;
+	textGameOver->setFont(*font);
+	textGameOver->setCharacterSize(36);
+	textGameOver->setString("¡Game Over!");
+	textGameOver->setPosition(400, 300);
+
 	font->loadFromFile("assets/arial.ttf");
 	menu->setFont(*font);
 	menu->setString("Presiona 'S' para comenzar");
@@ -113,17 +118,40 @@ void Juego::ejecutar() {
 
 
 void Juego::gameLoop() {
-
-	while (ventana1->isOpen()) {
-
+	
+	bool gameOver = false;
+	
+	while (ventana1->isOpen() && !gameOver) {
 
 		procesar_eventos();
 		actualizar();
 		dibujar();
-
+		
+		if (vidas <= 0) {
+			gameOver = true;
+			
+		}
 	}
 
-}
+	while (gameOver && ventana1->isOpen()) {
+			ventana1->clear();
+						
+			
+			
+			ventana1->draw(*textGameOver);
+
+			ventana1->display();
+
+			// Procesar eventos para cerrar la ventana si se presiona la "X" de cerrar
+			Event eventoGameOver;
+			while (ventana1->pollEvent(eventoGameOver)) {
+				if (eventoGameOver.type == Event::Closed) {
+					ventana1->close();
+				}
+			}
+		}
+	}
+
 
 void Juego::procesar_eventos() {
 	Event evento1;
@@ -155,7 +183,7 @@ void Juego::actualizar() {
 			inocente->Eliminado();
 		}
 	}
-	
+
 }
 
 

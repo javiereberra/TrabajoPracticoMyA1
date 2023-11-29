@@ -29,13 +29,13 @@ Enemigos::Enemigos() {
 	enemSpritePuerta = new Sprite;
 	enemSpritePuerta->setTexture(*enemTextPuerta);
 
+	pos = 0;
 	
 	
-
 	_estaVisible = false;
 	
 	tiempoVisible = 1.5f;
-	tiempoApagado = 0.5f;
+	tiempoApagado = 1.2f;
 
 	positions[0] = Vector2f(75.f, 84.f);
 	positions[1] = Vector2f(525.f, 84.f);
@@ -53,22 +53,27 @@ bool Enemigos::EstaActivo() {
 
 bool Enemigos::Colision(float x, float y) {
 
-	FloatRect bounds1 = enemSpriteArriba->getGlobalBounds();
-	FloatRect bounds2 = enemSpriteAbajo->getGlobalBounds();
-	FloatRect bounds3 = enemSpritePuerta->getGlobalBounds();
-
-	if (bounds1.contains(x, y)) {
-		return true;
-	}
+	if (_estaVisible) {
 		
-	if (bounds2.contains(x, y)) {
-		return true;
-	}
+		FloatRect bounds1 = enemSpriteArriba->getGlobalBounds();
+		FloatRect bounds2 = enemSpriteAbajo->getGlobalBounds();
+		FloatRect bounds3 = enemSpritePuerta->getGlobalBounds();
 		
-	if (bounds3.contains(x, y)) {
-		return true;
-	}
 
+		if (bounds1.contains(x, y)) {
+			return true;
+		}
+
+		if (bounds2.contains(x, y)) {
+			return true;
+		}
+
+		if (bounds3.contains(x, y)) {
+			return true;
+		}
+
+	}
+	return false;
 }
 
 void Enemigos::Eliminado() {
@@ -102,8 +107,8 @@ void Enemigos::Dibujar(RenderWindow* ventana) {
 }
 
 void Enemigos::Actualizar(RenderWindow* ventana) {
-	
-	
+
+
 	if (!_estaVisible) {
 		if (_clock.getElapsedTime().asSeconds() > tiempoApagado) {
 			_clock.restart();
@@ -132,9 +137,9 @@ void Enemigos::Actualizar(RenderWindow* ventana) {
 				break;
 			}
 			/// termina switch
-			
-			
-					
+
+
+
 		}
 	}
 	else {

@@ -19,12 +19,16 @@ private:
 	Texture* enemTextPuerta;
 	Sprite* enemSpritePuerta;
 
-	bool _estaVivo;
-	bool _estaVisible;
+	
+	
 	Clock _clock;
 
 	float tiempoVisible;
 	float tiempoApagado;
+
+	
+
+	bool _estaVisible;
 
 	//probar posiciones
 	Vector2f positions[5];
@@ -34,6 +38,7 @@ public:
 
 	Enemigos();
 
+	
 	
 	bool Colision(float x, float y);
 

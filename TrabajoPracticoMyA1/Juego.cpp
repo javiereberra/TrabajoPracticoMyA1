@@ -163,19 +163,10 @@ void Juego::procesar_eventos() {
 		case Event::MouseButtonPressed:
 			if (evento1.mouseButton.button == Mouse::Button::Left)
 				
-				if (enemigos != nullptr) {
-					std::cout << "Estado de Enemigos::EstaActivo: " << enemigos->EstaActivo() << std::endl;
-					std::cout << "Estado de Enemigos::_estaVisible: " << enemigos->_estaVisible << std::endl;
-				}
-
+				
 				disparar();
 
-			//
-			float x = evento1.mouseButton.x;
-			float y = evento1.mouseButton.y;
-			std::cout << "Coordenadas del disparo: " << x << ", " << y << std::endl;
 			
-			//
 			break;
 		}
 	}
